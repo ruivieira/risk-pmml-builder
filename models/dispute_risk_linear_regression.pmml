@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_3" xmlns:data="http://jpmml.org/jpmml-model/InlineTable" version="4.3">
+	<Header>
+		<Application name="JPMML-SkLearn" version="1.5.14"/>
+		<Timestamp>2019-06-04T12:22:17Z</Timestamp>
+	</Header>
+	<MiningBuildTask>
+		<Extension>PMMLPipeline(steps=[('classifier', LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False))])</Extension>
+	</MiningBuildTask>
+	<DataDictionary>
+		<DataField name="dispute_risk" optype="continuous" dataType="double"/>
+		<DataField name="amount" optype="continuous" dataType="double"/>
+		<DataField name="holder_index" optype="continuous" dataType="double"/>
+	</DataDictionary>
+	<RegressionModel functionName="regression">
+		<MiningSchema>
+			<MiningField name="dispute_risk" usageType="target"/>
+			<MiningField name="amount"/>
+			<MiningField name="holder_index"/>
+		</MiningSchema>
+		<RegressionTable intercept="0.7408588131263567">
+			<NumericPredictor name="amount" coefficient="0.01663841557122661"/>
+			<NumericPredictor name="holder_index" coefficient="-0.3711065188712087"/>
+		</RegressionTable>
+	</RegressionModel>
+</PMML>

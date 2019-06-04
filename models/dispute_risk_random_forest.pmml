@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_3" xmlns:data="http://jpmml.org/jpmml-model/InlineTable" version="4.3">
+	<Header>
+		<Application name="JPMML-SkLearn" version="1.5.14"/>
+		<Timestamp>2019-06-04T12:22:19Z</Timestamp>
+	</Header>
+	<MiningBuildTask>
+		<Extension>PMMLPipeline(steps=[('classifier', RandomForestRegressor(bootstrap=True, criterion='mse', max_depth=None,
+                      max_features='auto', max_leaf_nodes=None,
+                      min_impurity_decrease=0.0, min_impurity_split=None,
+                      min_samples_leaf=1, min_samples_split=2,
+                      min_weight_fraction_leaf=0.0, n_estimators=10,
+                      n_jobs=None, oob_score=False, random_state=None,
+                      verbose=0, warm_start=False))])</Extension>
+	</MiningBuildTask>
+	<DataDictionary>
+		<DataField name="dispute_risk" optype="continuous" dataType="double"/>
+		<DataField name="amount" optype="continuous" dataType="float"/>
+		<DataField name="holder_index" optype="continuous" dataType="float"/>
+	</DataDictionary>
+	<TransformationDictionary>
+		<DerivedField name="double(amount)" optype="continuous" dataType="double">
+			<FieldRef field="amount"/>
+		</DerivedField>
+		<DerivedField name="double(holder_index)" optype="continuous" dataType="double">
+			<FieldRef field="holder_index"/>
+		</DerivedField>
+	</TransformationDictionary>
+	<MiningModel functionName="regression">
+		<MiningSchema>
+			<MiningField name="dispute_risk" usageType="target"/>
+			<MiningField name="amount"/>
+			<MiningField name="holder_index"/>
+		</MiningSchema>
+		<Segmentation multipleModelMethod="average">
+			<Segment id="1">
+				<True/>
+				<TreeModel functionName="regression" missingValueStrategy="nullPrediction" noTrueChildStrategy="returnLastPrediction" splitCharacteristic="multiSplit">
+					<MiningSchema>
+						<MiningField name="amount"/>
+						<MiningField name="holder_index"/>
+					</MiningSchema>
+					<Node score="4.0">
+						<True/>
+						<Node score="2.0">
+							<SimplePredicate field="double(amount)" operator="lessOrEqual" value="149.93499755859375"/>
+							<Node score="1.0">
+								<SimplePredicate field="double(amount)" operator="lessOrEqual" value="100.03999710083008"/>
+								<Node score="2.0">
+									<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+								</Node>
+							</Node>
+							<Node score="3.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+							</Node>
+						</Node>
+						<Node score="2.0">
+							<SimplePredicate field="double(amount)" operator="lessOrEqual" value="200.02000427246094"/>
+							<Node score="4.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+								<Node score="3.0">
+									<SimplePredicate field="double(amount)" operator="lessOrEqual" value="150.02000427246094"/>
+								</Node>
+							</Node>
+							<Node score="3.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="2.5"/>
+							</Node>
+						</Node>
+						<Node score="5.0">
+							<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="1.5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="2">
+				<True/>
+				<TreeModel functionName="regression" missingValueStrategy="nullPrediction" noTrueChildStrategy="returnLastPrediction" splitCharacteristic="multiSplit">
+					<MiningSchema>
+						<MiningField name="amount"/>
+						<MiningField name="holder_index"/>
+					</MiningSchema>
+					<Node score="4.0">
+						<True/>
+						<Node score="2.0">
+							<SimplePredicate field="double(amount)" operator="lessOrEqual" value="149.93999481201172"/>
+							<Node score="1.0">
+								<SimplePredicate field="double(amount)" operator="lessOrEqual" value="99.95999908447266"/>
+								<Node score="2.0">
+									<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+								</Node>
+							</Node>
+							<Node score="3.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+								<Node score="2.0">
+									<SimplePredicate field="double(amount)" operator="lessOrEqual" value="100.02999877929688"/>
+								</Node>
+							</Node>
+						</Node>
+						<Node score="2.0">
+							<SimplePredicate field="double(amount)" operator="lessOrEqual" value="200.0250015258789"/>
+							<Node score="3.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="2.5"/>
+								<Node score="4.0">
+									<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+									<Node score="3.0">
+										<SimplePredicate field="double(amount)" operator="lessOrEqual" value="150.02000427246094"/>
+									</Node>
+								</Node>
+							</Node>
+						</Node>
+						<Node score="5.0">
+							<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="1.5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="3">
+				<True/>
+				<TreeModel functionName="regression" missingValueStrategy="nullPrediction" noTrueChildStrategy="returnLastPrediction" splitCharacteristic="multiSplit">
+					<MiningSchema>
+						<MiningField name="amount"/>
+						<MiningField name="holder_index"/>
+					</MiningSchema>
+					<Node score="4.0">
+						<True/>
+						<Node score="2.0">
+							<SimplePredicate field="double(amount)" operator="lessOrEqual" value="149.93499755859375"/>
+							<Node score="1.0">
+								<SimplePredicate field="double(amount)" operator="lessOrEqual" value="100.03000259399414"/>
+								<Node score="2.0">
+									<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+								</Node>
+							</Node>
+							<Node score="3.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+							</Node>
+						</Node>
+						<Node score="2.0">
+							<SimplePredicate field="double(amount)" operator="lessOrEqual" value="200.02000427246094"/>
+							<Node score="3.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="2.5"/>
+								<Node score="4.0">
+									<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+									<Node score="3.0">
+										<SimplePredicate field="double(amount)" operator="lessOrEqual" value="150.09000396728516"/>
+									</Node>
+								</Node>
+							</Node>
+						</Node>
+						<Node score="5.0">
+							<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="1.5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="4">
+				<True/>
+				<TreeModel functionName="regression" missingValueStrategy="nullPrediction" noTrueChildStrategy="returnLastPrediction" splitCharacteristic="multiSplit">
+					<MiningSchema>
+						<MiningField name="amount"/>
+						<MiningField name="holder_index"/>
+					</MiningSchema>
+					<Node score="4.0">
+						<True/>
+						<Node score="2.0">
+							<SimplePredicate field="double(amount)" operator="lessOrEqual" value="149.93999481201172"/>
+							<Node score="1.0">
+								<SimplePredicate field="double(amount)" operator="lessOrEqual" value="100.01499938964844"/>
+								<Node score="2.0">
+									<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+								</Node>
+							</Node>
+							<Node score="3.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+							</Node>
+						</Node>
+						<Node score="2.0">
+							<SimplePredicate field="double(amount)" operator="lessOrEqual" value="200.0250015258789"/>
+							<Node score="3.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="2.5"/>
+								<Node score="4.0">
+									<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+									<Node score="3.0">
+										<SimplePredicate field="double(amount)" operator="lessOrEqual" value="150.01000213623047"/>
+									</Node>
+								</Node>
+								<Node score="2.0">
+									<SimplePredicate field="double(amount)" operator="lessOrEqual" value="150.03499603271484"/>
+								</Node>
+							</Node>
+						</Node>
+						<Node score="5.0">
+							<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="1.5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="5">
+				<True/>
+				<TreeModel functionName="regression" missingValueStrategy="nullPrediction" noTrueChildStrategy="returnLastPrediction" splitCharacteristic="multiSplit">
+					<MiningSchema>
+						<MiningField name="amount"/>
+						<MiningField name="holder_index"/>
+					</MiningSchema>
+					<Node score="4.0">
+						<True/>
+						<Node score="2.0">
+							<SimplePredicate field="double(amount)" operator="lessOrEqual" value="149.95999908447266"/>
+							<Node score="1.0">
+								<SimplePredicate field="double(amount)" operator="lessOrEqual" value="100.01000213623047"/>
+								<Node score="2.0">
+									<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+								</Node>
+							</Node>
+							<Node score="3.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+							</Node>
+						</Node>
+						<Node score="2.0">
+							<SimplePredicate field="double(amount)" operator="lessOrEqual" value="200.02999877929688"/>
+							<Node score="3.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="2.5"/>
+								<Node score="4.0">
+									<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+									<Node score="3.0">
+										<SimplePredicate field="double(amount)" operator="lessOrEqual" value="150.02000427246094"/>
+									</Node>
+								</Node>
+							</Node>
+						</Node>
+						<Node score="5.0">
+							<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="1.5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="6">
+				<True/>
+				<TreeModel functionName="regression" missingValueStrategy="nullPrediction" noTrueChildStrategy="returnLastPrediction" splitCharacteristic="multiSplit">
+					<MiningSchema>
+						<MiningField name="amount"/>
+						<MiningField name="holder_index"/>
+					</MiningSchema>
+					<Node score="4.0">
+						<True/>
+						<Node score="2.0">
+							<SimplePredicate field="double(amount)" operator="lessOrEqual" value="149.95999908447266"/>
+							<Node score="1.0">
+								<SimplePredicate field="double(amount)" operator="lessOrEqual" value="100.04999923706055"/>
+								<Node score="2.0">
+									<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+								</Node>
+							</Node>
+							<Node score="3.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+							</Node>
+						</Node>
+						<Node score="2.0">
+							<SimplePredicate field="double(amount)" operator="lessOrEqual" value="200.02999877929688"/>
+							<Node score="3.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="2.5"/>
+								<Node score="4.0">
+									<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+									<Node score="3.0">
+										<SimplePredicate field="double(amount)" operator="lessOrEqual" value="150.02000427246094"/>
+									</Node>
+								</Node>
+							</Node>
+						</Node>
+						<Node score="5.0">
+							<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="1.5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="7">
+				<True/>
+				<TreeModel functionName="regression" missingValueStrategy="nullPrediction" noTrueChildStrategy="returnLastPrediction" splitCharacteristic="multiSplit">
+					<MiningSchema>
+						<MiningField name="amount"/>
+						<MiningField name="holder_index"/>
+					</MiningSchema>
+					<Node score="4.0">
+						<True/>
+						<Node score="2.0">
+							<SimplePredicate field="double(amount)" operator="lessOrEqual" value="149.95999908447266"/>
+							<Node score="1.0">
+								<SimplePredicate field="double(amount)" operator="lessOrEqual" value="100.03499984741211"/>
+								<Node score="2.0">
+									<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+								</Node>
+							</Node>
+							<Node score="3.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+							</Node>
+						</Node>
+						<Node score="2.0">
+							<SimplePredicate field="double(amount)" operator="lessOrEqual" value="200.0250015258789"/>
+							<Node score="3.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="2.5"/>
+								<Node score="4.0">
+									<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+									<Node score="3.0">
+										<SimplePredicate field="double(amount)" operator="lessOrEqual" value="150.02000427246094"/>
+									</Node>
+								</Node>
+							</Node>
+						</Node>
+						<Node score="5.0">
+							<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="1.5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="8">
+				<True/>
+				<TreeModel functionName="regression" missingValueStrategy="nullPrediction" noTrueChildStrategy="returnLastPrediction" splitCharacteristic="multiSplit">
+					<MiningSchema>
+						<MiningField name="amount"/>
+						<MiningField name="holder_index"/>
+					</MiningSchema>
+					<Node score="4.0">
+						<True/>
+						<Node score="2.0">
+							<SimplePredicate field="double(amount)" operator="lessOrEqual" value="149.93999481201172"/>
+							<Node score="1.0">
+								<SimplePredicate field="double(amount)" operator="lessOrEqual" value="100.03000259399414"/>
+								<Node score="2.0">
+									<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+								</Node>
+							</Node>
+							<Node score="3.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+							</Node>
+						</Node>
+						<Node score="2.0">
+							<SimplePredicate field="double(amount)" operator="lessOrEqual" value="200.0250015258789"/>
+							<Node score="3.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="2.5"/>
+								<Node score="4.0">
+									<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+									<Node score="3.0">
+										<SimplePredicate field="double(amount)" operator="lessOrEqual" value="150.0800018310547"/>
+									</Node>
+								</Node>
+							</Node>
+						</Node>
+						<Node score="5.0">
+							<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="1.5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="9">
+				<True/>
+				<TreeModel functionName="regression" missingValueStrategy="nullPrediction" noTrueChildStrategy="returnLastPrediction" splitCharacteristic="multiSplit">
+					<MiningSchema>
+						<MiningField name="amount"/>
+						<MiningField name="holder_index"/>
+					</MiningSchema>
+					<Node score="4.0">
+						<True/>
+						<Node score="2.0">
+							<SimplePredicate field="double(amount)" operator="lessOrEqual" value="149.92499542236328"/>
+							<Node score="1.0">
+								<SimplePredicate field="double(amount)" operator="lessOrEqual" value="100.03499984741211"/>
+								<Node score="2.0">
+									<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+								</Node>
+							</Node>
+							<Node score="3.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+							</Node>
+						</Node>
+						<Node score="2.0">
+							<SimplePredicate field="double(amount)" operator="lessOrEqual" value="200.0250015258789"/>
+							<Node score="4.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+								<Node score="3.0">
+									<SimplePredicate field="double(amount)" operator="lessOrEqual" value="150.02000427246094"/>
+								</Node>
+							</Node>
+							<Node score="3.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="2.5"/>
+							</Node>
+						</Node>
+						<Node score="5.0">
+							<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="1.5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="10">
+				<True/>
+				<TreeModel functionName="regression" missingValueStrategy="nullPrediction" noTrueChildStrategy="returnLastPrediction" splitCharacteristic="multiSplit">
+					<MiningSchema>
+						<MiningField name="amount"/>
+						<MiningField name="holder_index"/>
+					</MiningSchema>
+					<Node score="4.0">
+						<True/>
+						<Node score="2.0">
+							<SimplePredicate field="double(amount)" operator="lessOrEqual" value="149.98500061035156"/>
+							<Node score="1.0">
+								<SimplePredicate field="double(amount)" operator="lessOrEqual" value="100.03000259399414"/>
+								<Node score="2.0">
+									<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+								</Node>
+							</Node>
+							<Node score="3.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+							</Node>
+						</Node>
+						<Node score="2.0">
+							<SimplePredicate field="double(amount)" operator="lessOrEqual" value="200.0250015258789"/>
+							<Node score="3.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="2.5"/>
+								<Node score="4.0">
+									<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+								</Node>
+							</Node>
+						</Node>
+						<Node score="5.0">
+							<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="1.5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+		</Segmentation>
+	</MiningModel>
+</PMML>
