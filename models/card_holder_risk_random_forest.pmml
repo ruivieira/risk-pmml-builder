@@ -2,10 +2,10 @@
 <PMML xmlns="http://www.dmg.org/PMML-4_3" xmlns:data="http://jpmml.org/jpmml-model/InlineTable" version="4.3">
 	<Header>
 		<Application name="JPMML-SkLearn" version="1.5.14"/>
-		<Timestamp>2019-06-04T12:22:22Z</Timestamp>
+		<Timestamp>2019-06-04T13:20:23Z</Timestamp>
 	</Header>
 	<MiningBuildTask>
-		<Extension>PMMLPipeline(steps=[('classifier', RandomForestRegressor(bootstrap=True, criterion='mse', max_depth=None,
+		<Extension>PMMLPipeline(steps=[('regressor', RandomForestRegressor(bootstrap=True, criterion='mse', max_depth=None,
                       max_features='auto', max_leaf_nodes=None,
                       min_impurity_decrease=0.0, min_impurity_split=None,
                       min_samples_leaf=1, min_samples_split=2,
@@ -154,9 +154,9 @@
 							<Node score="3.0">
 								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="1.5"/>
 								<Node score="3.0">
-									<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+									<SimplePredicate field="double(incidents)" operator="lessOrEqual" value="3.5"/>
 									<Node score="4.0">
-										<SimplePredicate field="double(incidents)" operator="lessOrEqual" value="3.5"/>
+										<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
 									</Node>
 								</Node>
 							</Node>
@@ -195,16 +195,16 @@
 						<Node score="3.0">
 							<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="2.5"/>
 							<Node score="3.0">
-								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
-								<Node score="4.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="1.5"/>
+								<Node score="3.0">
 									<SimplePredicate field="double(incidents)" operator="lessOrEqual" value="3.5"/>
+									<Node score="4.0">
+										<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+									</Node>
 								</Node>
 							</Node>
 							<Node score="2.0">
 								<SimplePredicate field="double(incidents)" operator="lessOrEqual" value="3.5"/>
-								<Node score="3.0">
-									<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="1.5"/>
-								</Node>
 							</Node>
 						</Node>
 					</Node>
@@ -367,16 +367,16 @@
 						<Node score="3.0">
 							<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="2.5"/>
 							<Node score="3.0">
-								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="1.5"/>
-								<Node score="3.0">
+								<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
+								<Node score="4.0">
 									<SimplePredicate field="double(incidents)" operator="lessOrEqual" value="3.5"/>
-									<Node score="4.0">
-										<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="0.5"/>
-									</Node>
 								</Node>
 							</Node>
 							<Node score="2.0">
 								<SimplePredicate field="double(incidents)" operator="lessOrEqual" value="3.5"/>
+								<Node score="3.0">
+									<SimplePredicate field="double(holder_index)" operator="lessOrEqual" value="1.5"/>
+								</Node>
 							</Node>
 						</Node>
 					</Node>

@@ -2,10 +2,10 @@
 <PMML xmlns="http://www.dmg.org/PMML-4_3" xmlns:data="http://jpmml.org/jpmml-model/InlineTable" version="4.3">
 	<Header>
 		<Application name="JPMML-SkLearn" version="1.5.14"/>
-		<Timestamp>2019-06-04T12:22:17Z</Timestamp>
+		<Timestamp>2019-06-04T13:20:19Z</Timestamp>
 	</Header>
 	<MiningBuildTask>
-		<Extension>PMMLPipeline(steps=[('classifier', LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False))])</Extension>
+		<Extension>PMMLPipeline(steps=[('regressor', LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False))])</Extension>
 	</MiningBuildTask>
 	<DataDictionary>
 		<DataField name="dispute_risk" optype="continuous" dataType="double"/>
@@ -18,9 +18,9 @@
 			<MiningField name="amount"/>
 			<MiningField name="holder_index"/>
 		</MiningSchema>
-		<RegressionTable intercept="0.7408588131263567">
-			<NumericPredictor name="amount" coefficient="0.01663841557122661"/>
-			<NumericPredictor name="holder_index" coefficient="-0.3711065188712087"/>
+		<RegressionTable intercept="0.8179095170050028">
+			<NumericPredictor name="amount" coefficient="0.016309450373128344"/>
+			<NumericPredictor name="holder_index" coefficient="-0.38417425997252236"/>
 		</RegressionTable>
 	</RegressionModel>
 </PMML>
