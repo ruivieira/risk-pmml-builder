@@ -2,6 +2,6 @@ jupyter
 jupyter-core
 matplotlib
 numpy
+nyoka
 pandas
 sklearn
-sklearn2pmml

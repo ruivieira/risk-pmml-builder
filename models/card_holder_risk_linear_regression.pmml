@@ -1,29 +1,33 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<PMML xmlns="http://www.dmg.org/PMML-4_3" xmlns:data="http://jpmml.org/jpmml-model/InlineTable" version="4.3">
-	<Header>
-		<Application name="JPMML-SkLearn" version="1.5.14"/>
-		<Timestamp>2019-06-04T13:20:22Z</Timestamp>
-	</Header>
-	<MiningBuildTask>
-		<Extension>PMMLPipeline(steps=[('regressor', LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False))])</Extension>
-	</MiningBuildTask>
-	<DataDictionary>
-		<DataField name="holder_risk" optype="continuous" dataType="double"/>
-		<DataField name="age" optype="continuous" dataType="double"/>
-		<DataField name="holder_index" optype="continuous" dataType="double"/>
-		<DataField name="incidents" optype="continuous" dataType="double"/>
-	</DataDictionary>
-	<RegressionModel functionName="regression">
-		<MiningSchema>
-			<MiningField name="holder_risk" usageType="target"/>
-			<MiningField name="age"/>
-			<MiningField name="holder_index"/>
-			<MiningField name="incidents"/>
-		</MiningSchema>
-		<RegressionTable intercept="1.1147276975558196">
-			<NumericPredictor name="age" coefficient="-0.006784740319043295"/>
-			<NumericPredictor name="holder_index" coefficient="-0.4226110177974337"/>
-			<NumericPredictor name="incidents" coefficient="0.4207287155672076"/>
-		</RegressionTable>
-	</RegressionModel>
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_3" version="4.4">
+    <Header copyright="Copyright (c) 2018 Software AG" description="Default Description">
+        <Application name="Nyoka" version="3.1.0"/>
+        <Timestamp>2019-06-04 21:20:07.221259</Timestamp>
+    </Header>
+    <MiningBuildTask>
+        <Extension value="Pipeline(memory=None,
+    steps=[('regressor',LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False))])"/>
+    </MiningBuildTask>
+    <DataDictionary numberOfFields="4">
+        <DataField name="age" optype="continuous" dataType="double"/>
+        <DataField name="holder_index" optype="continuous" dataType="double"/>
+        <DataField name="incidents" optype="continuous" dataType="double"/>
+        <DataField name="holder_risk" optype="continuous" dataType="double"/>
+    </DataDictionary>
+    <RegressionModel modelName="LinearRegression" functionName="regression">
+        <MiningSchema>
+            <MiningField name="age" usageType="active" optype="continuous"/>
+            <MiningField name="holder_index" usageType="active" optype="continuous"/>
+            <MiningField name="incidents" usageType="active" optype="continuous"/>
+            <MiningField name="holder_risk" usageType="target" optype="continuous"/>
+        </MiningSchema>
+        <Output>
+            <OutputField name="predicted_holder_risk" optype="continuous" dataType="double" feature="predictedValue"/>
+        </Output>
+        <RegressionTable intercept="1.1081464548491253">
+            <NumericPredictor name="age" exponent="1" coefficient="-0.0068395774531517"/>
+            <NumericPredictor name="holder_index" exponent="1" coefficient="-0.4168823860999863"/>
+            <NumericPredictor name="incidents" exponent="1" coefficient="0.4148619648372319"/>
+        </RegressionTable>
+    </RegressionModel>
 </PMML>

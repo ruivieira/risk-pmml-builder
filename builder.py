@@ -2,13 +2,14 @@ import data
 from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
-import sklearn2pmml as pmml
+from sklearn.pipeline import Pipeline
+from nyoka import skl_to_pmml
 
 df = data.build_dataset(10000)
 
 
 def build_LR_pipeline(inputs, outputs):
-    pipeline = pmml.PMMLPipeline([
+    pipeline = Pipeline([
         ("regressor", LinearRegression())
     ])
     pipeline.fit(inputs, outputs)
@@ -16,11 +17,12 @@ def build_LR_pipeline(inputs, outputs):
 
 
 def build_RF_pipeline(inputs, outputs):
-    pipeline = pmml.PMMLPipeline([
+    pipeline = Pipeline([
         ("regressor", RandomForestRegressor())
     ])
     pipeline.fit(inputs, outputs)
     return pipeline
+
 
 # Dispute Risk (DR) model
 
@@ -35,13 +37,13 @@ DR_X_train, DR_X_test, DR_y_train, DR_y_test = train_test_split(DR_inputs, DR_ou
 DR_linear_regression_pipeline = build_LR_pipeline(DR_X_train, DR_y_train)
 
 # save PMML model
-pmml.sklearn2pmml(DR_linear_regression_pipeline, "models/dispute_risk_linear_regression.pmml", with_repr=True)
+skl_to_pmml(DR_linear_regression_pipeline, ['amount', 'holder_index'], 'dispute_risk', "models/dispute_risk_linear_regression.pmml")
 
 # dispute risk random forest
 DR_random_forest_pipeline = build_RF_pipeline(DR_X_train, DR_y_train)
 
 # save PMML model
-pmml.sklearn2pmml(DR_random_forest_pipeline, "models/dispute_risk_random_forest.pmml", with_repr=True)
+skl_to_pmml(DR_random_forest_pipeline, ['amount', 'holder_index'], 'dispute_risk', "models/dispute_risk_random_forest.pmml")
 
 # Card Holder (CH) model
 
@@ -56,10 +58,10 @@ CH_X_train, CH_X_test, CH_y_train, CH_y_test = train_test_split(CH_inputs, CH_ou
 CH_linear_regression_pipeline = build_LR_pipeline(CH_X_train, CH_y_train)
 
 # save PMML model
-pmml.sklearn2pmml(CH_linear_regression_pipeline, "models/card_holder_risk_linear_regression.pmml", with_repr=True)
+skl_to_pmml(CH_linear_regression_pipeline, ['age', 'holder_index', 'incidents'], 'holder_risk', "models/card_holder_risk_linear_regression.pmml")
 
 # dispute risk random forest
 CH_random_forest_pipeline = build_RF_pipeline(CH_X_train, CH_y_train)
 
 # save PMML model
-pmml.sklearn2pmml(CH_random_forest_pipeline, "models/card_holder_risk_random_forest.pmml", with_repr=True)
+skl_to_pmml(CH_random_forest_pipeline, ['age', 'holder_index', 'incidents'], 'holder_risk', "models/card_holder_risk_random_forest.pmml")

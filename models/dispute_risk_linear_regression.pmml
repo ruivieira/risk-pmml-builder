@@ -1,26 +1,30 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<PMML xmlns="http://www.dmg.org/PMML-4_3" xmlns:data="http://jpmml.org/jpmml-model/InlineTable" version="4.3">
-	<Header>
-		<Application name="JPMML-SkLearn" version="1.5.14"/>
-		<Timestamp>2019-06-04T13:20:19Z</Timestamp>
-	</Header>
-	<MiningBuildTask>
-		<Extension>PMMLPipeline(steps=[('regressor', LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False))])</Extension>
-	</MiningBuildTask>
-	<DataDictionary>
-		<DataField name="dispute_risk" optype="continuous" dataType="double"/>
-		<DataField name="amount" optype="continuous" dataType="double"/>
-		<DataField name="holder_index" optype="continuous" dataType="double"/>
-	</DataDictionary>
-	<RegressionModel functionName="regression">
-		<MiningSchema>
-			<MiningField name="dispute_risk" usageType="target"/>
-			<MiningField name="amount"/>
-			<MiningField name="holder_index"/>
-		</MiningSchema>
-		<RegressionTable intercept="0.8179095170050028">
-			<NumericPredictor name="amount" coefficient="0.016309450373128344"/>
-			<NumericPredictor name="holder_index" coefficient="-0.38417425997252236"/>
-		</RegressionTable>
-	</RegressionModel>
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_3" version="4.4">
+    <Header copyright="Copyright (c) 2018 Software AG" description="Default Description">
+        <Application name="Nyoka" version="3.1.0"/>
+        <Timestamp>2019-06-04 21:20:07.179388</Timestamp>
+    </Header>
+    <MiningBuildTask>
+        <Extension value="Pipeline(memory=None,
+    steps=[('regressor',LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False))])"/>
+    </MiningBuildTask>
+    <DataDictionary numberOfFields="3">
+        <DataField name="amount" optype="continuous" dataType="double"/>
+        <DataField name="holder_index" optype="continuous" dataType="double"/>
+        <DataField name="dispute_risk" optype="continuous" dataType="double"/>
+    </DataDictionary>
+    <RegressionModel modelName="LinearRegression" functionName="regression">
+        <MiningSchema>
+            <MiningField name="amount" usageType="active" optype="continuous"/>
+            <MiningField name="holder_index" usageType="active" optype="continuous"/>
+            <MiningField name="dispute_risk" usageType="target" optype="continuous"/>
+        </MiningSchema>
+        <Output>
+            <OutputField name="predicted_dispute_risk" optype="continuous" dataType="double" feature="predictedValue"/>
+        </Output>
+        <RegressionTable intercept="0.7967757851094457">
+            <NumericPredictor name="amount" exponent="1" coefficient="0.0164722015102424"/>
+            <NumericPredictor name="holder_index" exponent="1" coefficient="-0.3846549459800382"/>
+        </RegressionTable>
+    </RegressionModel>
 </PMML>
