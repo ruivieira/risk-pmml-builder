@@ -9,7 +9,7 @@ df = data.build_dataset(10000)
 
 def build_LR_pipeline(inputs, outputs):
     pipeline = pmml.PMMLPipeline([
-        ("classifier", LinearRegression())
+        ("regressor", LinearRegression())
     ])
     pipeline.fit(inputs, outputs)
     return pipeline
@@ -17,17 +17,10 @@ def build_LR_pipeline(inputs, outputs):
 
 def build_RF_pipeline(inputs, outputs):
     pipeline = pmml.PMMLPipeline([
-        ("classifier", RandomForestRegressor())
+        ("regressor", RandomForestRegressor())
     ])
     pipeline.fit(inputs, outputs)
     return pipeline
-
-
-def dispute_risk_datasets(dataframe):
-    inputs = dataframe[['amount', 'holder_index']]
-    outputs = dataframe['dispute_risk']
-    return inputs, outputs
-
 
 # Dispute Risk (DR) model
 
