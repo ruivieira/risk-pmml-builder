@@ -73,7 +73,6 @@ STATUS = ["STANDARD", "SILVER", "GOLD", "PLATINUM"]
 
 
 def build_dataset(size):
-
     amounts_raw = np.random.normal(125, 50, size)
     holders_index = np.random.randint(0, 4, size)
 
