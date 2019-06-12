@@ -5,6 +5,7 @@ COPY data.py .
 COPY requirements.txt .
 
 RUN mkdir ./models
+RUN mkdir ./data
 
 RUN dnf -y update && \
     dnf -y install python3 python3-pip java-1.8.0-openjdk

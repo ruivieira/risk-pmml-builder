@@ -1,7 +1,10 @@
 jupyter
 jupyter-core
+keras
+keras2pmml
 matplotlib
 numpy
 nyoka
 pandas
 sklearn
+tensorflow
