@@ -6,6 +6,7 @@ from sklearn.pipeline import Pipeline
 from nyoka import skl_to_pmml
 from keras.models import Sequential
 from keras.layers import Dense
+import pandas as pd
 
 df = data.build_dataset(10000)
 
@@ -46,6 +47,7 @@ if __name__=='__main__':
 
     # save the testing datasets
     DR_X_test.to_csv("data/dispute_risk_test.csv", columns=['amount', 'holder_index'], index=False)
+    df.to_csv("data/dispute_risk.csv", columns=['amount', 'holder_index', 'dispute_risk'], index=False)
 
     # dispute risk linear regression
     DR_linear_regression_pipeline = build_LR_pipeline(DR_X_train, DR_y_train)
@@ -74,6 +76,7 @@ if __name__=='__main__':
 
     # save the testing dataset
     CH_X_test.to_csv("data/card_holder_risk_test.csv", columns=['age', 'holder_index', 'incidents'], index=False)
+    df.to_csv("data/holder_risk.csv", columns=['age', 'holder_index', 'incidents', 'holder_risk'], index=False)
 
     # dispute risk linear regression
     CH_linear_regression_pipeline = build_LR_pipeline(CH_X_train, CH_y_train)

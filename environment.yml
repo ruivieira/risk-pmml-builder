@@ -5,7 +5,7 @@ dependencies:
   - jupyter
   - keras
   - matplotlib
-  - numpy
+  - numpy>=1.16.0
   - pandas
   - scikit-learn
   - tensorflow
